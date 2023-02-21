@@ -25,6 +25,7 @@
   "plugins": ["react", "@typescript-eslint", "prettier", "import", "unused-imports"],
   "rules": {
     "react/react-in-jsx-scope": "off",
+    "@next/next/no-img-element": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "ts", "tsx"] }], // js, ts에서 jsx문법 사용시 에러
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [

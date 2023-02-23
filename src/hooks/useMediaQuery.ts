@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 import { breakPoints, mediaQuerys } from '@/styles/media';
 
 const useMediaQuery = (breakpoint: (typeof breakPoints)[number]) => {
@@ -9,7 +10,7 @@ const useMediaQuery = (breakpoint: (typeof breakPoints)[number]) => {
     setIsRange(e.matches);
   }, []);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (typeof window === 'undefined') return;
 
     const media = window.matchMedia(`(min-width:${width}px)`);

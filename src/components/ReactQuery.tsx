@@ -14,7 +14,6 @@ const ReactQuery = ({ children, dehydratedState }: PropsWithChildren<IProps>) =>
         defaultOptions: {
           queries: {
             staleTime: 3 * 60 * 1000, // 임시 3분
-            suspense: true,
           },
         },
       })

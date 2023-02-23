@@ -7,24 +7,32 @@ const Header = () => {
   const { isRange } = useMediaQuery('sm');
 
   return (
-    <Container>
-      <h1>
-        <LogoWrapper>
-          <source srcSet="/images/icons/ico-logo.svg" media="(min-width: 576px)" />
-          <img src="/images/icons/ico-logo-m.svg" alt="호텔에삶" />
-        </LogoWrapper>
-      </h1>
-      <SearchLink isRange={isRange} />
-      {isRange && <VerticalBar />}
-      <UserLogin isRange={isRange} />
-    </Container>
+    <Wrapper>
+      <Container>
+        <h1>
+          <LogoWrapper>
+            <source srcSet="/images/icons/ico-logo.svg" media="(min-width: 576px)" />
+            <img src="/images/icons/ico-logo-m.svg" alt="호텔에삶" />
+          </LogoWrapper>
+        </h1>
+        <SearchLink isRange={isRange} />
+        {isRange && <VerticalBar />}
+        <UserLogin isRange={isRange} />
+      </Container>
+    </Wrapper>
   );
 };
 
 export default Header;
 
-const Container = styled.header`
+const Wrapper = styled.header`
   position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #fff;
+`;
+
+const Container = styled.div`
   display: flex;
   align-items: center;
   column-gap: 12px;

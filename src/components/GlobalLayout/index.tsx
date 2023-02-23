@@ -5,7 +5,7 @@ const GlobalLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <Header />
-      {children}
+      <main>{children}</main>
     </>
   );
 };

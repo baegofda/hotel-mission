@@ -22,6 +22,13 @@ const style = css`
     color: inherit;
     text-decoration: none;
   }
+
+  button {
+    font-family: inherit;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+  }
 `;
 
 export { style };

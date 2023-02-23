@@ -1,3 +1,7 @@
-export default function Home() {
-  return <div>메인</div>;
-}
+import HomeContainer from '@/views/Home';
+
+const Home = () => {
+  return <HomeContainer />;
+};
+
+export default Home;

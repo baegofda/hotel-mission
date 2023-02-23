@@ -26,13 +26,23 @@ const font18 = css`
   line-height: 24px;
 `;
 
+const font20 = css`
+  font-size: 20px;
+  line-height: 32px;
+`;
+
 const font24 = css`
   font-size: 24px;
   line-height: 36px;
 `;
 
-const TFontSizes = ['font10', 'font12', 'font14', 'font16', 'font18', 'font24'] as const;
+const font32 = css`
+  font-size: 32px;
+  line-height: 44px;
+`;
+
+const TFontSizes = ['font10', 'font12', 'font14', 'font16', 'font18', 'font20', 'font24', 'font32'] as const;
 
 export type TFontSizes = Record<(typeof TFontSizes)[number], SerializedStyles>;
 
-export const fontSizes = { font10, font12, font14, font16, font18, font24 };
+export const fontSizes = { font10, font12, font14, font16, font18, font20, font24, font32 };

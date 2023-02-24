@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { TBanner } from '@/api/types/home';
 import TLink from '@/components/TLink';
-import { notoSerifKr } from '@/styles/fonts';
+import { notoSerifKr, ptSerif } from '@/styles/fonts';
 
 interface IProps extends Pick<TBanner, 'name' | 'link' | 'description' | 'promotion'> {
   hasBadge: boolean;
@@ -12,7 +12,7 @@ interface IProps extends Pick<TBanner, 'name' | 'link' | 'description' | 'promot
 const BannerCard = ({ name, link, description, promotion, hasBadge = false }: IProps) => {
   return (
     <TLink href={link}>
-      <Container>
+      <Container hasBadge={hasBadge}>
         <CardName>{name}</CardName>
         <Description>{description}</Description>
         <Wrapper>
@@ -29,12 +29,43 @@ const BannerCard = ({ name, link, description, promotion, hasBadge = false }: IP
 
 export default BannerCard;
 
-const Container = styled.a`
+const Container = styled.a<{ hasBadge: boolean }>`
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 33px 24px 24px;
   background-color: #fff;
   box-shadow: 4px 4px 10px 10px rgba(163, 162, 161, 0.2);
+
+  ${({ theme, hasBadge }) =>
+    hasBadge &&
+    css`
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: 'NEW';
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 85px;
+        height: 40px;
+        font-family: ${ptSerif.style.fontFamily};
+        font-style: italic;
+        color: #fff;
+        background-color: #0d5e49;
+        transform-origin: top left;
+        transform: rotate(90deg);
+
+        ${theme.fontSizes.font20}
+
+        display: none;
+
+        ${theme.media.xl} {
+          display: flex;
+        }
+      }
+    `}
 
   ${({ theme }) => theme.media.sm} {
     padding: 31px 32px 28px 40px;

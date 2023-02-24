@@ -3,7 +3,7 @@ import { PropsWithChildren } from 'react';
 
 const TLink = ({ href, children, ...props }: PropsWithChildren<LinkProps>) => {
   return (
-    <NextLink href={href} legacyBehavior passHref={true} {...props}>
+    <NextLink href={href} legacyBehavior passHref {...props}>
       {children}
     </NextLink>
   );

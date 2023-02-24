@@ -27,6 +27,7 @@ const style = css`
     font-family: inherit;
     padding: 0;
     border: 0;
+    background-color: transparent;
     cursor: pointer;
   }
 `;

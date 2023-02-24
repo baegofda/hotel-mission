@@ -1,9 +1,9 @@
 import instance from './config';
-import { IMainResponse } from './types/main';
+import { IHomeResponse } from './types/home';
 
-export const main = {
-  getMainData: async () => {
-    const { data } = await instance.get<IMainResponse>('/main');
+export const home = {
+  getHomeData: async () => {
+    const { data } = await instance.get<IHomeResponse>('/main');
 
     return data;
   },

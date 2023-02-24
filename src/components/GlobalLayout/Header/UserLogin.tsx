@@ -2,7 +2,6 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useMemo } from 'react';
 import TLink from '@/components/TLink';
-import { SrOnly } from '@/styles/utils';
 
 interface IProps {
   isRange: boolean;
@@ -21,7 +20,7 @@ const UserLogin = ({ isRange }: IProps) => {
           {isLogin ? (
             <>
               마이페이지
-              {isUpdated && <SrOnly>업데이트된 정보가 있어요.</SrOnly>}
+              {isUpdated && <span className="sr-only">업데이트된 정보가 있어요.</span>}
             </>
           ) : (
             '로그인'
@@ -35,7 +34,7 @@ const UserLogin = ({ isRange }: IProps) => {
         <img src="/images/icons/ico-profile.svg" alt={isLogin ? '내 정보 확인하기' : '로그인하기'} width={24} height={24} />
         {isVisisbleBadge && (
           <Updated>
-            <SrOnly>업데이트된 정보가 있어요.</SrOnly>
+            <span className="sr-only">업데이트된 정보가 있어요.</span>
           </Updated>
         )}
       </LinkWrapper>

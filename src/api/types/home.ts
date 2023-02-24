@@ -1,4 +1,4 @@
-export interface IMainResponse {
+export interface IHomeResponse {
   is_curator: boolean;
   curator: TCurator | null;
   banners: TBanner[];
@@ -14,15 +14,17 @@ export type TCurator = {
 };
 
 export type TBanner = {
-  hotel_id: number;
+  depth: number | null;
+  description: string | null;
+  hotel_id: number | null;
   images: string;
-  name: string;
-  description: string;
-  promotion: string;
   link: string;
-  depth: null;
-  tab: null;
+  mobile_images: string | null;
+  name: string;
+  promotion: string | null;
   route: string;
+  tab: null;
+  tags: string[] | null;
   view: string;
 };
 

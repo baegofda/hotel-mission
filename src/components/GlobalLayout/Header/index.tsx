@@ -28,8 +28,8 @@ export default Header;
 const Wrapper = styled.header`
   position: sticky;
   top: 0;
-  z-index: 1;
   background-color: #fff;
+  z-index: 2;
 `;
 
 const Container = styled.div`

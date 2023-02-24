@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { main } from '@/api/index';
+import { home } from '@/api/index';
 
-export const useGetMainData = () => {
-  return useQuery(['main'], main.getMainData);
+export const useGetHomeData = () => {
+  return useQuery(['home'], home.getHomeData);
 };

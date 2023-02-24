@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import SearchLink from './SearchLink';
 import UserLogin from './UserLogin';
+import TLink from '@/components/TLink';
 import useMediaQuery from '@/hooks/useMediaQuery';
 
 const Header = () => {
@@ -10,10 +11,14 @@ const Header = () => {
     <Wrapper>
       <Container>
         <h1>
-          <LogoWrapper>
-            <source srcSet="/images/icons/ico-logo.svg" media="(min-width: 576px)" />
-            <img src="/images/icons/ico-logo-m.svg" alt="호텔에삶" />
-          </LogoWrapper>
+          <TLink href={'/'}>
+            <a>
+              <LogoWrapper>
+                <source srcSet="/images/icons/ico-logo.svg" media="(min-width: 576px)" />
+                <img src="/images/icons/ico-logo-m.svg" alt="호텔에삶" />
+              </LogoWrapper>
+            </a>
+          </TLink>
         </h1>
         <SearchLink isRange={isRange} />
         {isRange && <VerticalBar />}

@@ -42,25 +42,35 @@ export type TCatalog = {
 };
 
 export interface TCatalogItem {
-  hotel_id: number;
+  description: string;
+  events: string[];
   first_image_position_y: string;
+  hotel_id: number;
+  hotel_price_scheme: string;
   image: string;
   name: string;
-  description: string;
-  tags?: string[];
   price: TPrice;
+  star: string;
+  subway_station: string;
+  tags?: string[];
   timesale: TTimesale[];
-  hash_tags?: string[];
+  type: string;
 }
 
 export type TPrice = {
-  is_price: boolean;
+  is_coupon: false;
+  is_price: true;
   price: TPriceItem[];
 };
 
 export type TPriceItem = {
-  price: number;
   discount: number;
+  max_night: number;
+  min_night: number;
+  min_night_discount: number;
+  min_night_price: number;
+  min_night_sale_price: number;
+  price: number;
   sale_price: number;
 };
 

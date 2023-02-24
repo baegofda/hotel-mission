@@ -105,9 +105,9 @@ const BannerSlider = ({ banners }: Pick<IHomeResponse, 'banners'>) => {
       <CardWrapper>
         <SliderActions>
           <SliderStatus>
-            <SlderCount>
+            <SliderPagination>
               {currentIndex + 1}/{filterdBanners.length}
-            </SlderCount>
+            </SliderPagination>
             <Progress>
               <ProgressBar ref={progressBar} slideIndex={currentIndex + 1} />
             </Progress>
@@ -198,7 +198,7 @@ const SliderStatus = styled.div`
   margin-right: auto;
 `;
 
-const SlderCount = styled.div`
+const SliderPagination = styled.div`
   display: flex;
   margin-right: 16px;
   color: #fff;

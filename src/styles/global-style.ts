@@ -6,8 +6,8 @@ const style = css`
   ${emotionReset}
 
   body {
-    font-family: ${pretendard.style.fontFamily}, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-      ${notoSerifKr.style.fontFamily};
+    font-family: ${pretendard.style.fontFamily}, ${notoSerifKr.style.fontFamily}, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial;
   }
 
   *,

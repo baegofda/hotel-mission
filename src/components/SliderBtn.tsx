@@ -11,13 +11,14 @@ interface IProps extends React.DetailedHTMLProps<ButtonHTMLAttributes<HTMLButton
 }
 
 const SliderBtn = ({ mode, color = '#fff', size, isDisable = false, setEl, ...props }: IProps) => {
+  const title = mode === 'prev' ? '이전 호텔 보기' : '다음 호텔 보기';
   const properties = {
     ...props,
     disabled: isDisable,
   };
 
   return (
-    <Button ref={setEl} {...properties} type="button" mode={mode}>
+    <Button ref={setEl} {...properties} type="button" mode={mode} title={title}>
       <svg width={size} height={size} viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_706_5003)">
           <path d="M10.8431 8.34314L16.5 14L10.8431 19.6568" stroke={color} />

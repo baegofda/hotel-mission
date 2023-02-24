@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Autoplay, EffectFade, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -12,33 +12,22 @@ import SliderBtn from '@/components/SliderBtn';
 import TLink from '@/components/TLink';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import { ptSerif } from '@/styles/fonts';
+import useBannerSlider from '@/views/Home/hooks/useBannerSlider';
 
 const BannerSlider = ({ banners }: Pick<IHomeResponse, 'banners'>) => {
-  const filterdBanners = banners.filter(banner => banner.description);
   const { isRange } = useMediaQuery('sm');
-  const bannerSize = filterdBanners.length;
-  const swiperContainer = useRef(null);
-  const progressBar = useRef<HTMLDivElement | null>(null);
-  const [isEnd, setIsEnd] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const filterdBanners = banners.filter(banner => banner.description);
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
+  const { currentIndex, progressBar, size, onTouchMove, onSlideChange, handleSlider, onAutoplayPause, onAutoplayResume, hasBadge } =
+    useBannerSlider(filterdBanners);
   const { name, link, description, promotion } = filterdBanners[currentIndex];
-  const hasBadge = currentIndex === 0;
 
-  const handlePrev = () => {
+  const onInit = () => {
     if (!progressBar.current) return;
 
-    progressBar.current.style.transition = 'none';
-    progressBar.current.style.transform = `translateX(calc(-100% + ((100% / ${bannerSize}) * ${currentIndex - 1})))`;
-  };
-
-  const handleNext = () => {
-    if (!progressBar.current) return;
-
-    progressBar.current.style.transition = 'none';
-    progressBar.current.style.transform = `translateX(calc(-100% + ((100% / ${bannerSize}) * ${currentIndex})))`;
+    progressBar.current.style.transition = 'transform 5s linear 0s';
+    progressBar.current.style.transform = `translateX(calc(-100% + (100% / ${size}))`;
   };
 
   return (
@@ -46,51 +35,14 @@ const BannerSlider = ({ banners }: Pick<IHomeResponse, 'banners'>) => {
       <TLink href={link}>
         <a>
           <Swiper
-            ref={swiperContainer}
             effect="fade"
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             navigation={{ prevEl, nextEl }}
-            onInit={() => {
-              if (!progressBar.current) return;
-
-              progressBar.current.style.transition = 'transform 5s linear 0s';
-              progressBar.current.style.transform = `translateX(calc(-100% + (100% / ${bannerSize}))`;
-            }}
-            onSlideChange={swiper => {
-              if (!progressBar.current) return;
-
-              if (isEnd && swiper.realIndex === 0) {
-                progressBar.current.style.transition = 'none';
-                progressBar.current.style.transform = `translateX(-100%)`;
-                setIsEnd(false);
-              }
-
-              if (isDragging) {
-                progressBar.current.style.transition = 'none';
-                progressBar.current.style.transform = `translateX(calc(-100% + ((100% / ${bannerSize}) * ${swiper.realIndex})))`;
-              }
-
-              setCurrentIndex(swiper.realIndex);
-            }}
-            onTouchMove={() => setIsDragging(true)}
-            onAutoplayPause={swiper => {
-              if (!progressBar.current) return;
-
-              if (!isEnd && swiper.realIndex === 0 && !isDragging) {
-                progressBar.current.style.transition = 'transform 5s linear 0s';
-                progressBar.current.style.transform = `translateX(calc(-100% + (100% / ${bannerSize}))`;
-              }
-            }}
-            onAutoplayResume={swiper => {
-              if (!progressBar.current) return;
-
-              if (swiper.realIndex === bannerSize - 1) setIsEnd(true);
-
-              progressBar.current.style.transition = 'transform 5s linear 0s';
-              progressBar.current.style.transform = `translateX(calc(-100% + ((100% / ${bannerSize}) * ${currentIndex + 1})))`;
-
-              isDragging && setIsDragging(false);
-            }}
+            onInit={onInit}
+            onSlideChange={onSlideChange}
+            onTouchMove={onTouchMove}
+            onAutoplayPause={onAutoplayPause}
+            onAutoplayResume={onAutoplayResume}
             modules={[Autoplay, EffectFade, Navigation]}
             loop
           >
@@ -113,8 +65,8 @@ const BannerSlider = ({ banners }: Pick<IHomeResponse, 'banners'>) => {
             </Progress>
           </SliderStatus>
           <ButtonContainer>
-            <SliderBtn mode="prev" onClick={handlePrev} size={isRange ? 32 : 28} setEl={setPrevEl} />
-            <SliderBtn mode="next" onClick={handleNext} size={isRange ? 32 : 28} setEl={setNextEl} />
+            <SliderBtn mode="prev" onClick={() => handleSlider(currentIndex - 1)} size={isRange ? 32 : 28} setEl={setPrevEl} />
+            <SliderBtn mode="next" onClick={() => handleSlider(currentIndex)} size={isRange ? 32 : 28} setEl={setNextEl} />
           </ButtonContainer>
         </SliderActions>
         <BannerCard name={name} link={link} description={description} promotion={promotion} hasBadge={hasBadge} />

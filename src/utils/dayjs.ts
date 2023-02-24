@@ -10,10 +10,10 @@ import dayjs from 'dayjs';
  *
  *      return "05일 06:31:30"
  */
-export const getRemainingTime = (targetDate: dayjs.ConfigType, format?: string) => {
+export const getRemainingTime = (targetDate: dayjs.ConfigType, format = 'DD일 HH:mm:ss') => {
   const target = dayjs(targetDate);
   const now = dayjs();
   const diff = target.diff(now);
 
-  return dayjs(diff).format(format ?? 'DD일 HH:mm:ss');
+  return dayjs(diff).format(format);
 };

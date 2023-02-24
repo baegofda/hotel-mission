@@ -1,12 +1,13 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { groupBy, keys } from 'lodash-es';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRecoilState } from 'recoil';
 import HotelSlider from './HotelSlider';
 import LocalCategory from './LocalCategory';
 import { localHotelCategoryState } from '../../store';
 import { useGetHomeData } from '@/api/hooks/main';
+import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
 import { ptSerif } from '@/styles/fonts';
 
 const LocalHotelSlider = () => {
@@ -16,7 +17,9 @@ const LocalHotelSlider = () => {
   const categories = keys(catalogs);
   const catalog = catalogs[localHotelCategory === '' ? categories[0] : localHotelCategory];
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
+    setLocalHotelCategory(categories[0]);
+
     return () => setLocalHotelCategory(categories[0]);
   }, []);
 

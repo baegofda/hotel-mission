@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { TBanner } from '@/api/types/home';
 import TLink from '@/components/TLink';
-import { notoSerifKr, ptSerif } from '@/styles/fonts';
 
 interface IProps extends Pick<TBanner, 'name' | 'link' | 'description' | 'promotion'> {
   hasBadge: boolean;
@@ -50,7 +49,7 @@ const Container = styled.a<{ hasBadge: boolean }>`
         text-align: center;
         width: 85px;
         height: 40px;
-        font-family: ${ptSerif.style.fontFamily};
+        font-family: 'PT Serif', serif;
         font-style: italic;
         color: #fff;
         background-color: #0d5e49;
@@ -80,7 +79,7 @@ const Wrapper = styled.div`
 `;
 
 const CardName = styled.h3`
-  font-family: ${notoSerifKr.style.fontFamily};
+  font-family: 'Noto Serif KR', serif;
   color: #30373f;
 
   ${({ theme }) => css`
@@ -97,7 +96,7 @@ const CardName = styled.h3`
 `;
 
 const Description = styled.p`
-  font-family: ${notoSerifKr.style.fontFamily};
+  font-family: 'Noto Serif KR', serif;
   color: #30373f;
   font-weight: 600;
   word-break: keep-all;

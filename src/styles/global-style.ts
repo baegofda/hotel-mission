@@ -1,13 +1,11 @@
 import { css } from '@emotion/react';
 import emotionReset from 'emotion-reset';
-import { notoSerifKr, pretendard } from './fonts';
 
 const style = css`
   ${emotionReset}
 
   body {
-    font-family: ${pretendard.style.fontFamily}, ${notoSerifKr.style.fontFamily}, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-      'Helvetica Neue', Arial;
+    font-family: 'Pretendard', 'Noto Serif KR', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   }
 
   *,

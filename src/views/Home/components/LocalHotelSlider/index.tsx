@@ -8,7 +8,6 @@ import LocalCategory from './LocalCategory';
 import { localHotelCategoryState } from '../../store';
 import { useGetHomeData } from '@/api/hooks/main';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
-import { ptSerif } from '@/styles/fonts';
 
 const LocalHotelSlider = () => {
   const { data } = useGetHomeData();
@@ -66,7 +65,7 @@ const Header = styled.div`
     left: 50%;
     padding: 0 100px;
     color: #fff;
-    font-family: ${ptSerif.style.fontFamily};
+    font-family: 'PT Serif', serif;
     font-style: italic;
     white-space: nowrap;
     transform: translateX(-50%);

@@ -1,4 +1,5 @@
 import '@/styles/utils.css';
+import '@/styles/fonts.css';
 import type { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
 import GlobalLayout from '@/components/GlobalLayout';

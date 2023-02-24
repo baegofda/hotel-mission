@@ -11,7 +11,6 @@ import { IHomeResponse, TBanner } from '@/api/types/home';
 import SliderBtn from '@/components/SliderBtn';
 import TLink from '@/components/TLink';
 import useMediaQuery from '@/hooks/useMediaQuery';
-import { ptSerif } from '@/styles/fonts';
 import useBannerSlider from '@/views/Home/hooks/useBannerSlider';
 
 const BannerSlider = ({ banners }: Pick<IHomeResponse, 'banners'>) => {
@@ -154,7 +153,7 @@ const SliderPagination = styled.div`
   display: flex;
   margin-right: 16px;
   color: #fff;
-  font-family: ${ptSerif.style.fontFamily};
+  font-family: 'PT Serif', serif;
   font-style: italic;
   font-weight: 700;
 

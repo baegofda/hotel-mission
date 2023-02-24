@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { notoSerifKr } from '@/styles/fonts';
 
 const EventBanner = () => {
   const onClickBanner = () => {
@@ -70,7 +69,7 @@ const Content = styled.p`
 const Text = styled.span`
   ${({ theme }) => theme.fontSizes.font16}
 
-  font-family: ${notoSerifKr.style.fontFamily};
+  font-family: 'Noto Serif KR', serif;
   font-weight: 700;
   margin-bottom: 16px;
 

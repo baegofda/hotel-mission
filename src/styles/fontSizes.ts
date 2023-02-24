@@ -41,8 +41,13 @@ const font32 = css`
   line-height: 44px;
 `;
 
-const TFontSizes = ['font10', 'font12', 'font14', 'font16', 'font18', 'font20', 'font24', 'font32'] as const;
+const font40 = css`
+  font-size: 40px;
+  line-height: 60px;
+`;
+
+const TFontSizes = ['font10', 'font12', 'font14', 'font16', 'font18', 'font20', 'font24', 'font32', 'font40'] as const;
 
 export type TFontSizes = Record<(typeof TFontSizes)[number], SerializedStyles>;
 
-export const fontSizes = { font10, font12, font14, font16, font18, font20, font24, font32 };
+export const fontSizes = { font10, font12, font14, font16, font18, font20, font24, font32, font40 };

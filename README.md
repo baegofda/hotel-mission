@@ -20,6 +20,8 @@ $ yarn dev
 $ yarn prod
 ```
 
+> 라이브 주소: https://tmmission.vercel.app/
+
 ## 기술 스택
 
 - Nextjs (Typescript)
@@ -254,3 +256,65 @@ export default useProgress;
 
 성능을 위해 virtal mode를 추가하였습니다.
 자연스러운 이미지 전환을 위해 애니메이션을 추가하였습니다.
+
+<p align="center">
+  <img src="public/images/readMe/time-sale.gif" width="600"/>
+</p>
+
+타임 세일 띠 배너의 타임은 dayjs를 이용합니다.
+관련 메소드들은 utils와 hooks로 관리합니다.
+
+```javascript
+// utils/dayjs.ts
+import dayjs from 'dayjs';
+
+/**
+ * 현재 시간부터 목표 시간까지의 남은 시간을 구합니다.
+ *
+ * ex)
+ *      now: "Sat Feb 25 2023 02:27:29 GMT+0900"
+ *      targetDate: "2023-02-28 23:59:00"
+ *      format: "DD일 HH:mm:ss"
+ *
+ *      return "05일 06:31:30"
+ */
+export const getRemainingTime = (targetDate: dayjs.ConfigType, format = 'DD일 HH:mm:ss') => {
+  const target = dayjs(targetDate);
+  const now = dayjs();
+  const diff = target.diff(now);
+
+  return dayjs(diff).format(format);
+};
+```
+
+```javascript
+// hooks/useRemainingTimer
+import dayjs from 'dayjs';
+import { useState } from 'react';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
+import { getRemainingTime } from '@/utils/dayjs';
+
+const useRemainingTimer = (targetDate: dayjs.ConfigType, format?: string, delay?: 1000) => {
+  const [remainingTime, setRemainingTime] = useState('');
+
+  useIsomorphicLayoutEffect(() => {
+    let timer: NodeJS.Timeout | null = null;
+
+    timer = setInterval(() => setRemainingTime(getRemainingTime(targetDate, format)), delay);
+
+    return () => {
+      timer && clearInterval(timer);
+    };
+  }, []);
+
+  return { remainingTime };
+};
+
+export default useRemainingTimer;
+```
+
+간단하게 사용이 가능합니다.
+
+```javascript
+const { remainingTime } = useRemainingTimer(end_at, format);
+```

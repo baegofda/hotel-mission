@@ -115,6 +115,7 @@ $ yarn prod
 > - 무한 루프 true (딜레이 5초)
 > - fade 슬라이드
 > - progress
+> - 첫 슬라이드에서만 NEW 태그 활성화
 
 <p align="center">
   <img src="public/images/readMe/1-large.gif" width="600"/>

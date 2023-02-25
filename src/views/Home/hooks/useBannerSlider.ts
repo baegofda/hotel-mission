@@ -15,6 +15,8 @@ const useBannerSlider = (banners: TBanner[]) => {
 
   const handleSlider = (index: number) => offset(index);
 
+  const onTouchMove = () => setIsDragging(true);
+
   const onSlideChange = (swiper: Swiper) => {
     if (isEnd && swiper.realIndex === 0) {
       reset();
@@ -33,8 +35,6 @@ const useBannerSlider = (banners: TBanner[]) => {
 
     isDragging && setIsDragging(false);
   };
-
-  const onTouchMove = () => setIsDragging(true);
 
   return { currentIndex, progressBar, size, onTouchMove, onSlideChange, handleSlider, onAutoplayResume, hasBadge };
 };

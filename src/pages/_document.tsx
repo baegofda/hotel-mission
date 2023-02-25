@@ -9,18 +9,21 @@ export default function Document() {
           as="font"
           type="font/woff2"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Regular.woff2"
+          crossOrigin="anonymous"
         />
         <link
           rel="preload"
           as="font"
           type="font/woff2"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Medium.woff2"
+          crossOrigin="anonymous"
         />
         <link
           rel="preload"
           as="font"
           type="font/woff2"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Bold.woff2"
+          crossOrigin="anonymous"
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

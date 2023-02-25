@@ -2,12 +2,13 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { Navigation } from 'swiper';
+import { Navigation, Virtual } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import HotelCard from './HotelCard';
 import { TCatalog } from '@/api/types/home';
 import SliderBtn from '@/components/SliderBtn';
 import 'swiper/css';
+import 'swiper/css/virtual';
 import { localHotelCategoryState, localHotelCurrentIdxState } from '@/views/Home/store';
 
 const HotelSlider = ({ items }: Pick<TCatalog, 'items'>) => {
@@ -29,7 +30,8 @@ const HotelSlider = ({ items }: Pick<TCatalog, 'items'>) => {
         centeredSlides
         onSlideChange={swiper => setLocalHotelCurrentIdx(swiper.realIndex)}
         navigation={{ prevEl, nextEl }}
-        modules={[Navigation]}
+        modules={[Navigation, Virtual]}
+        virtual
       >
         {items.map((item, idx) => (
           <SwiperSlide key={idx}>

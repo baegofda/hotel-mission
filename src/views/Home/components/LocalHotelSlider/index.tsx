@@ -40,14 +40,10 @@ const Wrapper = styled.section`
   align-items: center;
   padding: 60px 16px;
   background-color: #30373f;
-  padding-bottom: calc(constant(safe-area-inset-bottom) + 60);
-  padding-bottom: calc(env(safe-area-inset-bottom) + 60);
 
   ${({ theme }) => theme.media.sm} {
     padding-top: 100px;
     padding-bottom: 48px;
-    padding-bottom: calc(constant(safe-area-inset-bottom) + 48);
-    padding-bottom: calc(env(safe-area-inset-bottom) + 48);
   }
 `;
 

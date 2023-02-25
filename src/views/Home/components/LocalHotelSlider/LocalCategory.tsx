@@ -19,7 +19,7 @@ const LocalCategory = ({ categories }: { categories: string[] }) => {
       {categories.map(category => (
         <Category key={category} htmlFor={category}>
           <input
-            className="none"
+            // className="none"
             id={category}
             type="radio"
             value={category}
@@ -42,7 +42,8 @@ const Categories = styled.fieldset`
   margin-bottom: 40px;
 
   input {
-    display: none;
+    left: -10000px;
+    position: absolute;
   }
 
   ${({ theme }) => theme.media.sm} {

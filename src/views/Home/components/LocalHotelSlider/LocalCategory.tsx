@@ -19,14 +19,13 @@ const LocalCategory = ({ categories }: { categories: string[] }) => {
       {categories.map(category => (
         <Category key={category} htmlFor={category}>
           <input
-            className="hide"
+            className="none"
             id={category}
             type="radio"
             value={category}
             name={'local'}
             onChange={onChangeFilter}
             defaultChecked={localHotelCategory === category}
-            onClick={e => e.preventDefault()}
           />
           <Local>{category}</Local>
         </Category>
@@ -41,6 +40,10 @@ const Categories = styled.fieldset`
   display: flex;
   align-items: center;
   margin-bottom: 40px;
+
+  input {
+    display: none;
+  }
 
   ${({ theme }) => theme.media.sm} {
     margin-bottom: 80px;

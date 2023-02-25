@@ -1,10 +1,12 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
+import { TPrice } from '@/api/types/home';
 import { IProductionCard } from '@/views/Home/types';
 
 const Price = ({ price }: Pick<IProductionCard, 'price'>) => {
-  const { is_coupon, min_night_discount, min_night_sale_price, originTotalPrice, saleTotalPrice, hasPrice } = price;
+  const { is_coupon, is_price, min_night_discount, min_night_sale_price, originTotalPrice, saleTotalPrice, hasPrice } = price;
+  const isVisibleCoupon = is_coupon || is_price;
 
   if (!hasPrice) {
     return (
@@ -19,7 +21,7 @@ const Price = ({ price }: Pick<IProductionCard, 'price'>) => {
     <>
       <Origin>
         정가<OriginPrice>{originTotalPrice.toLocaleString()}원</OriginPrice>
-        {is_coupon && <Coupon>적용 가능한 쿠폰이 있어요!</Coupon>}
+        {isVisibleCoupon && <Coupon is_price={is_price}>{is_price ? <span>쿠폰 적용가</span> : <span>적용 가능한 쿠폰이 있어요!</span>}</Coupon>}
       </Origin>
       <Sale>
         <DisCountRate>{min_night_discount}%</DisCountRate>
@@ -57,22 +59,22 @@ const OriginPrice = styled.del`
   color: #616161;
 `;
 
-const Coupon = styled.div`
+const Coupon = styled.div<Pick<TPrice, 'is_price'>>`
+  ${({ theme }) => theme.fontSizes.font10}
+
+  padding: 2px 4px;
+  background: ${({ is_price }) => (is_price ? '#dcf1ec' : 'transparent')};
+  border-radius: 4px;
   color: #03936e;
   font-weight: 700;
 
-  ${({ theme }) => css`
-    ${theme.fontSizes.font10}
-
-    ${theme.media.lg} {
+  ${({ is_price }) =>
+    is_price &&
+    css`
       display: flex;
       align-items: center;
       justify-content: center;
       column-gap: 4px;
-      margin-bottom: 0;
-      padding: 2px 4px;
-      background: #dcf1ec;
-      border-radius: 4px;
 
       &::before {
         content: '';
@@ -80,8 +82,7 @@ const Coupon = styled.div`
         height: 16px;
         background: url('/images/icons/ico-discount.svg') no-repeat center/cover;
       }
-    }
-  `};
+    `}
 `;
 
 const Sale = styled.div`
@@ -137,11 +138,10 @@ const DetailPrice = styled.div`
   display: flex;
   align-items: flex-end;
   color: rgb(48, 55, 63);
+  margin-top: 32px;
 
   ${({ theme }) => css`
     ${theme.fontSizes.font12}
-
-    margin-top: 32px;
 
     ${theme.media.lg} {
       ${theme.fontSizes.font14}

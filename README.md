@@ -1,38 +1,92 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 트래블메이커스 FE 미션
 
-## Getting Started
+## 목차
 
-First, run the development server:
+[실행 방법](##실행-방법)
 
-```bash
-npm run dev
+[기술 스택](##기술-스택)
+
+[디렉터리 구조](##디렉터리-구조)
+
+[상세 설명](##상세-설명)
+
+## 실행 방법
+
+```shell
+$ git clone git@github.com:baegofda/hotel-mission.git
+$ yarn
+
+$ yarn dev # dev mode
 # or
-yarn dev
-# or
-pnpm dev
+$ yarn prod # production mode
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 기술 스택
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Nextjs (Typescript)
+- emotion
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+  - styled-component 대비 작은 번들 사이즈
+  - 간편한 세팅
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+  ```Typescript
+  // next.config.js
+  /** @type {import('next').NextConfig} */
+  const nextConfig = {
+    ...
+    compiler: {
+      emotion: true,
+    },
+  };
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+  module.exports = nextConfig;
+  ```
 
-## Learn More
+- react-query
+- recoil
+- swiper
+  - slide, fade, swiper, virtual mode 기능 구현
+- svgr
 
-To learn more about Next.js, take a look at the following resources:
+  - svg 파일을 컴포넌트로 변환하기 위함
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  ```shell
+  yarn icon
+  ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- axios, lodash-es, dayjs, next-seo, vercel
 
-## Deploy on Vercel
+## 디렉터리 구조
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<!-- prettier-ignore-start -->
+```markdown
+📁 public
+ └─ 📁 icons              <!-- svg to components/icons (with svgr)-->
+📁 src
+ └─ 📁 api
+     ├─ 📁 queries        <!-- react-query -->
+     ├─ 📁 types          <!-- API Response Types -->
+     ├─ 📃 config.ts      <!-- Axios config, interceptor etc. -->
+     └─ 📃 index.ts       <!-- Axios APIs -->
+ ├─ 📁 components         <!-- Global, Common Components -->
+     └─ 📁 icons          <!-- svg Components from public/icons (with svgr)-->  
+ ├─ 📁 config
+     └─ 📃 index.ts       <!-- API_ENDPOINT, etc. -->
+ ├─ 📁 consts             <!-- Common Contants -->
+ ├─ 📁 hooks              <!-- Common Custom Hooks -->
+ ├─ 📁 pages              <!-- _app, _document, _error, 404, Router Pages -->
+ ├─ 📁 store              <!-- Global Recoil Store -->
+ ├─ 📁 styles             <!-- Common Emotion style, css -->
+ ├─ 📁 types              <!-- Common Types -->
+ ├─ 📁 utils              <!-- Common Util Functions -->
+ └─ 📁 views
+     └─ 📁 [page-name]    <!-- form Pages -->
+         ├─ 📁 components <!-- Page Components -->
+         ├─ 📁 consts     <!-- Contants -->
+         ├─ 📁 hooks      <!-- Custom Hooks -->
+         ├─ 📁 store      <!-- Recoil Store -->  
+         ├─ 📁 types      <!-- Types -->
+         ├─ 📁 utils      <!-- Util Functions -->
+         └─ 📃 index.tsx  <!-- Page Container -->
+```
+<!-- prettier-ignore-end -->

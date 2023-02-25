@@ -20,6 +20,7 @@ const HotelSlider = ({ items }: Pick<TCatalog, 'items'>) => {
 
   useEffect(() => {
     return () => setLocalHotelCurrentIdx(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

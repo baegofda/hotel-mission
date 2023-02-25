@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import Swiper from 'swiper';
+import { Swiper } from 'swiper';
 import useProgress from './useProgress';
 import { TBanner } from '@/api/types/home';
 

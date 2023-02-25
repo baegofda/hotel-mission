@@ -12,7 +12,7 @@ const LandingSection = () => {
     <section>
       <h2 className="sr-only">호텔 한달살기</h2>
       <BannerSlider banners={data.banners} />
-      <EventBanner />
+      <EventBanner earlyBird={data.earlyBird} />
     </section>
   );
 };

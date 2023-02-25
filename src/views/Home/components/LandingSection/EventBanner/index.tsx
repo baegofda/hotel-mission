@@ -1,41 +1,39 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { IHomeResponse } from '@/api/types/home';
+import TLink from '@/components/TLink';
 
-const EventBanner = () => {
-  const onClickBanner = () => {
-    console.log('onModal');
-  };
+const EventBanner = ({ earlyBird }: Pick<IHomeResponse, 'earlyBird'>) => {
+  const { button, image, title, url } = earlyBird;
 
   return (
-    <Wrapper type="button" onClick={onClickBanner}>
-      <Container>
-        <Content>
-          <Text>
-            평일<span> 또는 주말</span>에만
-            <br />
-            호텔 롱스테이 해보세요
-          </Text>
-          <Event>
-            5만원 할인 받기 <img src="/images/icons/ico-angle.svg" alt="" width={24} height={24} />
-          </Event>
-        </Content>
-        <BannerImgWrapper>
-          <source srcSet="/images/main/coupon.png" media="(min-width: 576px)" />
-          <BannerImg src="/images/main/coupon-m.png" alt="" />
-        </BannerImgWrapper>
-      </Container>
+    <Wrapper>
+      <TLink href={url}>
+        <Container>
+          <Content>
+            <Text dangerouslySetInnerHTML={{ __html: title }} />
+            <Event>
+              {button} <img src="/images/icons/ico-angle.svg" alt="" width={24} height={24} />
+            </Event>
+          </Content>
+          <BannerImgWrapper>
+            <source srcSet="/images/main/coupon.png" media="(min-width: 576px)" />
+            <BannerImg src={image} alt="" />
+          </BannerImgWrapper>
+        </Container>
+      </TLink>
     </Wrapper>
   );
 };
 
 export default EventBanner;
 
-const Wrapper = styled.button`
+const Wrapper = styled.div`
   width: 100%;
   background-color: #ededed;
 `;
 
-const Container = styled.div`
+const Container = styled.a`
   position: relative;
   display: flex;
   align-items: center;
@@ -67,26 +65,18 @@ const Content = styled.p`
 `;
 
 const Text = styled.span`
-  ${({ theme }) => theme.fontSizes.font16}
-
   font-family: 'Noto Serif KR', serif;
   font-weight: 700;
   margin-bottom: 16px;
 
-  span {
-    display: none;
-  }
-
   ${({ theme }) => css`
+    ${theme.fontSizes.font16}
+
     ${theme.media.sm} {
       ${theme.fontSizes.font32}
 
       font-weight: 600;
       margin-bottom: 24px;
-
-      span {
-        display: inline;
-      }
     }
   `}
 `;

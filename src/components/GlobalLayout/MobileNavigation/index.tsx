@@ -24,7 +24,8 @@ const Wrapper = styled.nav`
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0 7.5px;
+  padding: 0 7.5px calc(constant(safe-area-inset-bottom));
+  padding: 0 7.5px calc(env(safe-area-inset-bottom));
   background-color: #fff;
   box-shadow: 4px 4px 20px rgba(48, 55, 63, 0.2);
   z-index: 2;

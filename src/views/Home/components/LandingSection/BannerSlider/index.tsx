@@ -18,8 +18,7 @@ const BannerSlider = ({ banners }: Pick<IHomeResponse, 'banners'>) => {
   const filterdBanners = banners.filter(banner => banner.description);
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
-  const { currentIndex, progressBar, size, onTouchMove, onSlideChange, handleSlider, onAutoplayPause, onAutoplayResume, hasBadge } =
-    useBannerSlider(filterdBanners);
+  const { currentIndex, progressBar, size, onTouchMove, onSlideChange, handleSlider, onAutoplayResume, hasBadge } = useBannerSlider(filterdBanners);
   const { name, link, description, promotion } = filterdBanners[currentIndex];
 
   const onInit = () => {
@@ -40,7 +39,6 @@ const BannerSlider = ({ banners }: Pick<IHomeResponse, 'banners'>) => {
             onInit={onInit}
             onSlideChange={onSlideChange}
             onTouchMove={onTouchMove}
-            onAutoplayPause={onAutoplayPause}
             onAutoplayResume={onAutoplayResume}
             modules={[Autoplay, EffectFade, Navigation]}
             loop

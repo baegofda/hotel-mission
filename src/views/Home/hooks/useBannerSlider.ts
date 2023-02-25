@@ -26,10 +26,6 @@ const useBannerSlider = (banners: TBanner[]) => {
     setCurrentIndex(swiper.realIndex);
   };
 
-  const onAutoplayPause = (swiper: Swiper) => {
-    if (!isEnd && swiper.realIndex === 0 && !isDragging) slide();
-  };
-
   const onAutoplayResume = (swiper: Swiper) => {
     if (swiper.realIndex === size - 1) setIsEnd(true);
 
@@ -40,7 +36,7 @@ const useBannerSlider = (banners: TBanner[]) => {
 
   const onTouchMove = () => setIsDragging(true);
 
-  return { currentIndex, progressBar, size, onTouchMove, onSlideChange, handleSlider, onAutoplayPause, onAutoplayResume, hasBadge };
+  return { currentIndex, progressBar, size, onTouchMove, onSlideChange, handleSlider, onAutoplayResume, hasBadge };
 };
 
 export default useBannerSlider;

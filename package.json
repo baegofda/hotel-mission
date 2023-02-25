@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "prod": "next build && next start",
+    "icon": "npx @svgr/cli --typescript --out-dir ./src/components/Icons  public/images/icons/components --no-dimensions  --svg-props width=100%,height=100%,fill=currentColor && yarn run lint",
     "lint": "next lint"
   },
   "dependencies": {
@@ -27,6 +28,8 @@
     "swiper": "^9.0.5"
   },
   "devDependencies": {
+    "@svgr/cli": "^6.5.1",
+    "@svgr/webpack": "^6.5.1",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "18.14.0",
     "@types/react": "18.0.28",

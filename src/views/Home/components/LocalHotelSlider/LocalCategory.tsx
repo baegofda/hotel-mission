@@ -26,6 +26,7 @@ const LocalCategory = ({ categories }: { categories: string[] }) => {
             name={'local'}
             onChange={onChangeFilter}
             defaultChecked={localHotelCategory === category}
+            onClick={e => e.preventDefault()}
           />
           <Local>{category}</Local>
         </Category>

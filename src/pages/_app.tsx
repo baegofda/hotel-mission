@@ -1,7 +1,7 @@
 import '@/styles/utils.css';
 import '@/styles/fonts.css';
 import type { AppProps } from 'next/app';
-import { Head } from 'next/document';
+import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import GlobalLayout from '@/components/GlobalLayout';
 import GlobalStyle from '@/components/GlobalStyle';

@@ -6,7 +6,7 @@ import { DefaultSeo } from 'next-seo';
 import GlobalLayout from '@/components/GlobalLayout';
 import GlobalStyle from '@/components/GlobalStyle';
 import ReactQuery from '@/components/ReactQuery';
-import Recoil from '@/components/Recoil';
+import RecoilProvider from '@/components/RecoilProvider';
 import useDefaultSeo from '@/hooks/useDefaultSeo';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ReactQuery dehydratedState={pageProps.dehydratedState}>
-      <Recoil>
+      <RecoilProvider>
         <DefaultSeo {...defaultSeo} />
         <Head>
           <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </GlobalLayout>
         </GlobalStyle>
-      </Recoil>
+      </RecoilProvider>
     </ReactQuery>
   );
 }

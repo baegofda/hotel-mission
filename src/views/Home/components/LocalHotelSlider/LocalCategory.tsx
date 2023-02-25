@@ -8,26 +8,22 @@ const LocalCategory = ({ categories }: { categories: string[] }) => {
   const [localHotelCategory, setLocalHotelCategory] = useRecoilState(localHotelCategoryState);
   const resetLocalHotelCurrentIdx = useResetRecoilState(localHotelCurrentIdxState);
 
-  const onChangeFilter = (e: React.FormEvent<HTMLInputElement>) => {
+  const onClickFilter = (category: string) => {
     resetLocalHotelCurrentIdx();
-    setLocalHotelCategory(e.currentTarget.value);
+    setLocalHotelCategory(category);
   };
 
   return (
     <Categories>
-      <legend className="sr-only">지역 선택하기</legend>
       {categories.map(category => (
-        <Category key={category} htmlFor={category}>
-          <input
-            // className="none"
-            id={category}
-            type="radio"
-            value={category}
-            name={'local'}
-            onChange={onChangeFilter}
-            defaultChecked={localHotelCategory === category}
-          />
-          <Local>{category}</Local>
+        <Category key={category}>
+          <CategoryBtn
+            isChecked={localHotelCategory === category}
+            onClick={() => onClickFilter(category)}
+            aria-checked={localHotelCategory === category}
+          >
+            {category}
+          </CategoryBtn>
         </Category>
       ))}
     </Categories>
@@ -36,22 +32,17 @@ const LocalCategory = ({ categories }: { categories: string[] }) => {
 
 export default LocalCategory;
 
-const Categories = styled.fieldset`
+const Categories = styled.ul`
   display: flex;
   align-items: center;
   margin-bottom: 40px;
-
-  input {
-    left: -10000px;
-    position: absolute;
-  }
 
   ${({ theme }) => theme.media.sm} {
     margin-bottom: 80px;
   }
 `;
 
-const Category = styled.label`
+const Category = styled.li`
   display: flex;
   align-items: center;
 
@@ -72,25 +63,17 @@ const Category = styled.label`
   }
 `;
 
-const Local = styled.div`
-  ${({ theme }) => theme.fontSizes.font24}
-
-  color: #979b9f;
-  text-align: center;
-  cursor: pointer;
-
-  input[type='radio']:checked ~ & {
-    color: #fff;
-    font-weight: 700;
-  }
-
+const CategoryBtn = styled.button<{ isChecked: boolean }>`
   &:hover {
     color: #fff;
   }
 
-  ${({ theme }) => css`
+  ${({ theme, isChecked }) => css`
     ${theme.fontSizes.font16}
+
     width: 52px;
+    color: ${isChecked ? '#fff' : '#979b9f'};
+    font-weight: ${isChecked ? 700 : 400};
 
     ${theme.media.sm} {
       ${theme.fontSizes.font24}

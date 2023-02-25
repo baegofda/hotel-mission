@@ -1,6 +1,7 @@
 import '@/styles/utils.css';
 import '@/styles/fonts.css';
 import type { AppProps } from 'next/app';
+import { Head } from 'next/document';
 import { DefaultSeo } from 'next-seo';
 import GlobalLayout from '@/components/GlobalLayout';
 import GlobalStyle from '@/components/GlobalStyle';
@@ -15,6 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <ReactQuery dehydratedState={pageProps.dehydratedState}>
       <Recoil>
         <DefaultSeo {...defaultSeo} />
+        <Head>
+          <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
+        </Head>
         <GlobalStyle>
           <GlobalLayout>
             <Component {...pageProps} />

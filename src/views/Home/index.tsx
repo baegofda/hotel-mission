@@ -1,5 +1,6 @@
+import dynamic from 'next/dynamic';
 import LandingSection from './components/LandingSection';
-import LocalHotelSlider from './components/LocalHotelSlider';
+const LocalHotelSlider = dynamic(() => import('./components/LocalHotelSlider'));
 
 const HomeContainer = () => {
   return (

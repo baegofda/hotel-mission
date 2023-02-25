@@ -64,7 +64,7 @@ const Label = styled.li`
   ${({ theme }) => theme.fontSizes.font12}
 
   color: #8d8d8d;
-  padding: 2px 12px;
+  padding: 2px 6px;
   border: 1px solid #b6b6b6;
   border-radius: 100px;
 `;

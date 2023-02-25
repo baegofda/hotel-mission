@@ -6,7 +6,7 @@ import { useRecoilState } from 'recoil';
 import HotelSlider from './HotelSlider';
 import LocalCategory from './LocalCategory';
 import { localHotelCategoryState } from '../../store';
-import { useGetHomeData } from '@/api/hooks/main';
+import { useGetHomeData } from '@/api/queries/main';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
 
 const LocalHotelSlider = () => {

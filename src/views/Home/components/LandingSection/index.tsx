@@ -1,7 +1,7 @@
 import React from 'react';
 import BannerSlider from './BannerSlider';
 import EventBanner from './EventBanner';
-import { useGetHomeData } from '@/api/hooks/main';
+import { useGetHomeData } from '@/api/queries/main';
 
 const LandingSection = () => {
   const { data } = useGetHomeData();

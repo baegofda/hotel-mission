@@ -44,6 +44,32 @@ const Thumbnail = styled.div`
   height: 180px;
   overflow: hidden;
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(39, 37, 37);
+    z-index: 2;
+    animation: maskAni 1s forwards;
+    pointer-events: none;
+
+    @keyframes maskAni {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+  }
+
+  &:hover img {
+    transform: scale(110%);
+  }
+
   ${({ theme }) => theme.media.lg} {
     left: 16px;
     right: 0;
@@ -57,10 +83,6 @@ const ThumbnailImg = styled.img`
   width: 100%;
   height: 100%;
   transition: transform 0.2s cubic-bezier(0, 0, 0.5, 1);
-
-  &:hover {
-    transform: scale(110%);
-  }
 `;
 
 const ThumbnailContents = styled.div`

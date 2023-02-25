@@ -19,7 +19,7 @@ const LocalCategory = ({ categories }: { categories: string[] }) => {
       {categories.map(category => (
         <Category key={category} htmlFor={category}>
           <input
-            className="sr-only"
+            className="hide"
             id={category}
             type="radio"
             value={category}

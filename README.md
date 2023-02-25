@@ -27,7 +27,7 @@ $ yarn prod
 - Nextjs (Typescript)
 - emotion
 
-  - styled-component 대비 작은 번들 사이즈
+  - styled-components 대비 작은 번들 사이즈
   - 간편한 세팅
 
   ```Typescript

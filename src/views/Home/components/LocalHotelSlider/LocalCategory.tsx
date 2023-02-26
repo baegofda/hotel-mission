@@ -75,6 +75,7 @@ const CategoryBtn = styled.div<{ isChecked: boolean }>`
     color: ${isChecked ? '#fff' : '#979b9f'};
     font-weight: ${isChecked ? 700 : 400};
     text-align: center;
+    cursor: pointer;
 
     ${theme.media.sm} {
       ${theme.fontSizes.font24}

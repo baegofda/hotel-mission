@@ -8,7 +8,8 @@ const LocalCategory = ({ categories }: { categories: string[] }) => {
   const [localHotelCategory, setLocalHotelCategory] = useRecoilState(localHotelCategoryState);
   const resetLocalHotelCurrentIdx = useResetRecoilState(localHotelCurrentIdxState);
 
-  const onClickFilter = (category: string) => {
+  const onClickFilter = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, category: string) => {
+    e.preventDefault();
     resetLocalHotelCurrentIdx();
     setLocalHotelCategory(category);
   };
@@ -19,7 +20,7 @@ const LocalCategory = ({ categories }: { categories: string[] }) => {
         <Category key={category}>
           <CategoryBtn
             isChecked={localHotelCategory === category}
-            onClick={() => onClickFilter(category)}
+            onClick={e => onClickFilter(e, category)}
             aria-checked={localHotelCategory === category}
           >
             {category}

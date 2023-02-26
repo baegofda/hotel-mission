@@ -54,7 +54,7 @@ export interface TCatalogItem {
   subway_station: string;
   tags?: string[];
   timesale: TTimesale[];
-  type: string;
+  type: 'hotel' | 'residence';
 }
 
 export type TPrice = {

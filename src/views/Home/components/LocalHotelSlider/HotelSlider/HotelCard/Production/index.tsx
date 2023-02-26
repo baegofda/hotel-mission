@@ -1,9 +1,9 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
+import Grade from './Grade';
 import Price from './Price';
 import TimeSaleBanner from '../TimeSaleBanner';
-import { HOTEL_TYPE } from '@/consts';
 import { IProductionCard } from '@/views/Home/types';
 
 interface IProps extends IProductionCard {
@@ -23,12 +23,7 @@ const Production = ({ isRange, tags, name, star, type, timesale, price }: IProps
           </Labels>
         )}
         <Name>{name}</Name>
-        <Grade>
-          <Star src="/images/icons/ico-star.svg" alt="" />
-          {star}성급
-          <Vertical />
-          {HOTEL_TYPE[type]}
-        </Grade>
+        <Grade star={star} type={type} />
         <Horizontal />
         <Price price={price} />
       </Container>
@@ -81,37 +76,6 @@ const Name = styled.h3`
       margin-bottom: 12px;
     }
   `}
-`;
-
-const Grade = styled.div`
-  display: flex;
-  align-items: center;
-  column-gap: 2px;
-  color: #6e7378;
-
-  ${({ theme }) => css`
-    ${theme.fontSizes.font12}
-
-    ${theme.media.lg} {
-      column-gap: 3px;
-    }
-  `}
-`;
-
-const Star = styled.img`
-  width: 12px;
-  height: 12px;
-
-  ${({ theme }) => theme.media.lg} {
-    width: 16px;
-    height: 16px;
-  }
-`;
-
-const Vertical = styled.div`
-  width: 1px;
-  height: 10px;
-  background-color: #6e7378;
 `;
 
 const Horizontal = styled.div`

@@ -1,11 +1,11 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { TCatalogItem } from '@/api/types/home';
 import { HOTEL_TYPE } from '@/consts';
 
 const Grade = ({ star, type }: Pick<TCatalogItem, 'star' | 'type'>) => {
-  const grade = useMemo(() => {
+  const grade = () => {
     if (type === 'hotel') {
       return (
         <>
@@ -18,11 +18,11 @@ const Grade = ({ star, type }: Pick<TCatalogItem, 'star' | 'type'>) => {
     if (type === 'residence') {
       return <img src="/images/icons/ico-residence.svg" alt="" width={16} height={16} />;
     }
-  }, [star, type]);
+  };
 
   return (
     <Wrapper>
-      {grade}
+      {grade()}
       <Vertical />
       {HOTEL_TYPE[type]}
     </Wrapper>

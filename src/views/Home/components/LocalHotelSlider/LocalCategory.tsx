@@ -8,8 +8,7 @@ const LocalCategory = ({ categories }: { categories: string[] }) => {
   const [localHotelCategory, setLocalHotelCategory] = useRecoilState(localHotelCategoryState);
   const resetLocalHotelCurrentIdx = useResetRecoilState(localHotelCurrentIdxState);
 
-  const onClickFilter = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, category: string) => {
-    e.preventDefault();
+  const onClickFilter = (category: string) => {
     resetLocalHotelCurrentIdx();
     setLocalHotelCategory(category);
   };
@@ -20,8 +19,8 @@ const LocalCategory = ({ categories }: { categories: string[] }) => {
         <Category key={category}>
           <CategoryBtn
             isChecked={localHotelCategory === category}
-            onClick={e => onClickFilter(e, category)}
-            aria-checked={localHotelCategory === category}
+            onClick={() => onClickFilter(category)}
+            aria-selected={localHotelCategory === category}
           >
             {category}
           </CategoryBtn>
@@ -64,7 +63,7 @@ const Category = styled.li`
   }
 `;
 
-const CategoryBtn = styled.button<{ isChecked: boolean }>`
+const CategoryBtn = styled.div<{ isChecked: boolean }>`
   &:hover {
     color: #fff;
   }
@@ -75,6 +74,7 @@ const CategoryBtn = styled.button<{ isChecked: boolean }>`
     width: 52px;
     color: ${isChecked ? '#fff' : '#979b9f'};
     font-weight: ${isChecked ? 700 : 400};
+    text-align: center;
 
     ${theme.media.sm} {
       ${theme.fontSizes.font24}
